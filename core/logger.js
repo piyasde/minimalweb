@@ -18,6 +18,7 @@ var log = function(message){
 
 var logInfo = function(message){
 	logger.info(message);
+	//console.log(message);
 }
 
 var logWarn = function(message){

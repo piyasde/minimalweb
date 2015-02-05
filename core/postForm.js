@@ -7,7 +7,6 @@ var formidable = require('formidable'),
 
 var postForm = function(req,res,uploadPath) {
     var self = this;
-
     var form = new formidable.IncomingForm({ 
 	  uploadDir: __dirname + '/../' + uploadPath,  
 	  keepExtensions: true
