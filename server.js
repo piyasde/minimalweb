@@ -55,7 +55,7 @@ reqIntercept.on('beforeProcessRequest', function(req,res,routeCollectionconfig) 
 	if(req.url=="/mwplain")
 		{
 			res.writeHead(200, {'Content-Type': 'text/plain'});
-			res.end('this process requires login' + '\n');
+			res.end('this process requires login');
 		}
 	
 	//We can write all check on collection here
