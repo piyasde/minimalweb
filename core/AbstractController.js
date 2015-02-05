@@ -32,7 +32,7 @@ AbstractController.prototype ={
 				{	
 					var plainString = processPlainString;
 					res.writeHead(200, {'Content-Type': 'text/'+processtype});
-					res.end(plainString + '\n');
+					res.end(plainString);
 					ri.interceptResponse(req,res);
 					return callback(null,'Done - Plain Process');
 					break;
@@ -41,7 +41,7 @@ AbstractController.prototype ={
  				{	
 					var htmlString = processHTMLString;
 					res.writeHead(200, {'Content-Type': 'text/'+processtype});
-					res.end(htmlString + '\n');
+					res.end(htmlString);
 					ri.interceptResponse(req,res);	
 					return callback(null,'Done - Html Process');
 					break;

@@ -29,7 +29,7 @@ MethodController.undo = function(req,res) {
 	// process specific business logic
 	// set the processed string to controller setJson method
 	// place to use any service callback
-	MethodController.setString("this is a call of method async from Dynamic Class for undo" + '\n');
+	MethodController.setString("this is a call of method async from Dynamic Class for undo");
 	MethodController.process(req,res,function(err,content){
 		logger.log('content -'+content);
 	});
