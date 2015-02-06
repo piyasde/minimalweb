@@ -1,7 +1,7 @@
 var webConfig = {
-	presentationPath :'public/',
+	presentationPath :'public',
 	uploadPath       :'upload',
-	logpath          :'logs',
+	logpath          :'application-logs',
 	host             :'127.0.0.1',
 	port             :'3000',
 	maxSize          : 26214400,

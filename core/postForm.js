@@ -8,13 +8,13 @@ var formidable = require('formidable'),
 var postForm = function(req,res,uploadPath) {
     var self = this;
     var form = new formidable.IncomingForm({ 
-	  uploadDir: __dirname + '/../' + uploadPath,  
+          uploadDir: uploadPath,  
 	  keepExtensions: true
 	});
 
     form
 	.on('file', function(field, file) {
-                // Uploaded file rename to original name and extension
+		// Uploaded file rename to original name and extension
 		fs.rename(file.path, form.uploadDir + "/" + file.name, function(err) {
 		    if ( err ) logger.logInfo('ERROR: ' + err);
 		});
@@ -32,7 +32,7 @@ var postForm = function(req,res,uploadPath) {
         });	
 
     form.parse(req, function(err, fields, files) {
-          self.emit('post', req,res,fields, files);
+	  self.emit('post', req,res,fields, files);
 	});
     
 };

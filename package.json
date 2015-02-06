@@ -1,7 +1,10 @@
 {
   "name": "minimalweb",
-  "description":"A simple web framework with node.js which has provision to support rest api and http request both",
-  "author": "Piyas De <piyas.de@gmail.com>",
+  "description": "A simple web framework with node.js which has provision to support rest api and http request both",
+  "author": {
+    "name": "Piyas De",
+    "email": "piyas.de@gmail.com"
+  },
   "version": "0.1.0",
   "main": "index.js",
   "dependencies": {
@@ -20,5 +23,29 @@
     "url": "^0.10.2",
     "mocha": "^2.1.0",
     "chai": "^1.10.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/piyasde/minimalweb.git"
+  },
+  "keywords": [
+    "node.js",
+    "web",
+    "framework",
+    "rest",
+    "api",
+    "custom",
+    "middleware"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/piyasde/minimalweb/issues"
+  },
+  "homepage": "https://github.com/piyasde/minimalweb",
+  "readme": "# minimalweb\nA simple web framework with node.js which has provision to support rest api and http request both\n",
+  "readmeFilename": "README.md",
+  "gitHead": "d9151cb7743ca56620651ef4082a88889b2ab94f",
+  "_id": "minimalweb@0.1.0",
+  "_shasum": "4f51e54b67ac38d3d37580c1293634e164f8fae1",
+  "_from": "minimalweb@*"
 }

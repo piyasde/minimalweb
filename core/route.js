@@ -11,8 +11,8 @@ var url = require("url"),
 
 var config = require('../config');
 var logger = require('./logger');
-var routeCollection = require('../routeCollection').getRouteCollection().routeCollection;
-var methodCollection = require('../routeCollection').getRouteCollection();
+var routeCollection;
+//var methodCollection;
 var serveFile = false;
 var maxData = 10 * 1024 * 1024; //2mb
 
@@ -155,9 +155,20 @@ var use = function(func){
 	functionStack[functionCount++]=func;
 }
 
+var setRouteCollection = function(collection){
+	routeCollection=collection;
+}
+
 
 var route = function (req, res) {
-
+  if(typeof routeCollection ==='undefined')
+	{
+		logger.log('Nothing is set at route...');
+		res.writeHead(200, {'Content-Type': 'text/plain'});
+		res.end('No route is set. Existing from the application\n');
+		return;
+	}
+  
   execute(req,res,function(){
 	logger.log('Middleware Execution Done...');
   });    
@@ -209,7 +220,7 @@ var route = function (req, res) {
 				serveFile = true;	
 				if(typeof routeCollection[i].outputFile !=='undefined')
 					{
-						var  f = config.presentationPath + routeCollection[i].outputFile;
+						var  f = config.presentationPath + '/' + routeCollection[i].outputFile;
 						var postController = routeCollection[i].executeController;
  						postController.setProcessType(routeCollection[i].format);
  						postController.setOutFileName(f);
@@ -308,4 +319,5 @@ module.exports.route = route;
 module.exports.use = use;
 module.exports.injectSession = injectSession;
 module.exports.getRequestInterceptor = getRequestInterceptor;
+module.exports.setRouteCollection = setRouteCollection;
 

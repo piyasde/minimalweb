@@ -3,4 +3,18 @@
  */
 var server = require('./server');
 var config = require('./config');
-server.minimalWeb(config.host,config.port);
+var controller = require('./core/AbstractController').getAbstractController();
+var postForm = require('./core/postForm');
+
+
+
+function spawn(host,port)
+{
+	server.minimalWeb(host,port);
+}
+module.exports.spawn = spawn;
+module.exports.reqInterceptor = server.requestInterceptor;
+module.exports.logger = server.logger;
+module.exports.route = server.route;
+module.exports.abstractController = controller;
+module.exports.postForm = postForm;
