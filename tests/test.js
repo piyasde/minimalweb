@@ -7,7 +7,7 @@ var expect = require('expect.js');
 describe('server', function(){
   describe('minimalweb-plain-login', function(){
     it('should return plain text in response, also test of request filter', function(done){
-    	request.get('http://127.0.0.1:3001/mwplain').end(function(res){
+    	request.get('http://54.68.92.16/mwplain').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
 		expect(res.text).to.equal('this process requires login');
@@ -17,7 +17,7 @@ describe('server', function(){
   });
   describe('minimalweb-plain', function(){
     it('should return plain text in response', function(done){
-    	request.get('http://127.0.0.1:3001/mwplain/').end(function(res){
+    	request.get('http://54.68.92.16/mwplain/').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
 		expect(res.text).to.equal('This is controller text');
@@ -27,7 +27,7 @@ describe('server', function(){
   });
   describe('minimalweb-plain-rest', function(){
     it('should return plain text in response', function(done){
-    	request.get('http://127.0.0.1:3001/mwplain/1').end(function(res){
+    	request.get('http://54.68.92.16/mwplain/1').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
 		expect(res.text).to.equal('This is controller text with name mwplain and value 1');
@@ -37,7 +37,7 @@ describe('server', function(){
   });
   describe('minimalweb-json', function(){
     it('should return json in response', function(done){
-    	request.get('http://127.0.0.1:3001/mwjson/').end(function(res){
+    	request.get('http://54.68.92.16/mwjson/').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
 		expect(res.text).to.equal('{\"name\":\"Ram\"}');
@@ -47,7 +47,7 @@ describe('server', function(){
   });
   describe('minimalweb-html', function(){
     it('should return html in response', function(done){
-    	request.get('http://127.0.0.1:3001/mwhtml/').end(function(res){
+    	request.get('http://54.68.92.16/mwhtml/').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
 		expect(res.text).to.equal('<h2>This is controller text</h2>');
@@ -57,7 +57,7 @@ describe('server', function(){
   });
   describe('minimalweb-xml', function(){
     it('should return xml in response', function(done){
-    	request.get('http://127.0.0.1:3001/mwxml').end(function(res){
+    	request.get('http://54.68.92.16/mwxml').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
                 //need to understand how to get XML
@@ -67,7 +67,7 @@ describe('server', function(){
   });
   describe('minimalweb-staticpage', function(){
     it('should return static file in response', function(done){
-    	request.get('http://127.0.0.1:3001/mwindexpage').end(function(res){
+    	request.get('http://54.68.92.16/mwindexpage').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
 		expect(res.text).to.contain('<h1>This is Index File</h1>');
@@ -77,7 +77,7 @@ describe('server', function(){
   });
   describe('minimalweb-dynamicpage', function(){
     it('should return dynamic file in response', function(done){
-    	request.get('http://127.0.0.1:3001/mwdynamicpage').end(function(res){
+    	request.get('http://54.68.92.16/mwdynamicpage').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
 		expect(res.text).to.contain('Ram');
@@ -87,7 +87,7 @@ describe('server', function(){
   });
   describe('minimalweb-methodundo', function(){
     it('should return plain text in response', function(done){
-    	request.get('http://127.0.0.1:3001/mwmethodundo').end(function(res){
+    	request.get('http://54.68.92.16/mwmethodundo').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
 		expect(res.text).to.equal('this is a call of method async from Dynamic Class for undo');
@@ -97,7 +97,7 @@ describe('server', function(){
   });
   describe('minimalweb-methoddo', function(){
     it('should return html in response', function(done){
-    	request.get('http://127.0.0.1:3001/mwmethoddo').end(function(res){
+    	request.get('http://54.68.92.16/mwmethoddo').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
 		expect(res.text).to.equal('<h2>This is controller text from Method </h2>');
@@ -108,7 +108,7 @@ describe('server', function(){
   
   describe('minimalweb-postForm', function(){
     it('should return json in response', function(done){
-	request.post('http://127.0.0.1:3001/mwpostForm')
+	request.post('http://54.68.92.16/mwpostForm')
 	.send("{ \"firstname\": \"Mickey\", \"lastname\" : \"Mouse\" }")
 	.end(function(res){
        		expect(res).to.exist;
