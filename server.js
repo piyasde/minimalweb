@@ -20,6 +20,9 @@ function initializeConfigs()
 	if (!fs.existsSync(config.logpath+"/minimalweb-application.log")) {
 	    fs.writeFileSync(config.logpath+"/minimalweb-application.log", ""); 
 	}
+	if (!fs.existsSync(config.logpath+"/minimalweb-access.log")) {
+	    fs.writeFileSync(config.logpath+"/minimalweb-access.log", ""); 
+	}
 	
 }
 
@@ -35,7 +38,7 @@ var logger = require('./core/logger');
 var reqIntercept = new route.getRequestInterceptor(); 
 
 
-var accessLogStream = fs.createWriteStream(__dirname + '/' +config.logpath + '/minimalweb-access.log', {flags: 'a'});
+var accessLogStream = fs.createWriteStream(config.logpath + '/minimalweb-access.log', {flags: 'a'});
 
 /**
  * practical use of the middleware pattern implemented in the framework
