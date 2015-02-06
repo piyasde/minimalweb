@@ -1,4 +1,3 @@
-# Status
 [![Build Status](https://travis-ci.org/piyasde/minimalweb.svg?branch=master)](https://travis-ci.org/piyasde/minimalweb.svg?branch=master)
 
 # minimalweb
