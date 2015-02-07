@@ -42,7 +42,6 @@
   "bugs": {
     "url": "https://github.com/piyasde/minimalweb/issues"
   },
-  "scripts" : { "start" : "node startpoint-test.js" } ,
   "homepage": "https://github.com/piyasde/minimalweb",
   "_shasum": "4f51e54b67ac38d3d37580c1293634e164f8fae1",
   "_from": "minimalweb@*"
