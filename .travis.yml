@@ -6,3 +6,5 @@ script:
  - "./node_modules/mocha/bin/mocha tests/test.js"
 after_script:
   - npm run coveralls
+after_success:
+  - coveralls
