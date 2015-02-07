@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/minimalweb.svg)](http://badge.fury.io/js/minimalweb)
 [![Build Status](https://travis-ci.org/piyasde/minimalweb.svg?branch=master)](https://travis-ci.org/piyasde/minimalweb.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/piyasde/minimalweb/badge.svg)](https://coveralls.io/r/piyasde/minimalweb)
 # minimalweb
