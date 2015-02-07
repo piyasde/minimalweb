@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-   "mocha": "*",
-   "should": ">= 0.0.1",
-   "superagent":"0.21.0",
-   "expect.js":"0.3.1"	
- }
-}

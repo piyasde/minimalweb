@@ -3,6 +3,30 @@ require('should');
 var assert = require("assert");
 var request = require('superagent');
 var expect = require('expect.js');
+var minimalweb = require('./index');
+
+describe('serverapps', function(){
+  before(function(){
+  		// function start
+  		var reqInterceptor = minimalweb.reqInterceptor;
+		var route = minimalweb.route;
+		var logger = minimalweb.logger;
+		var fMiddle = require('./example-middlewares/firstMiddleWare');
+		var sMiddle = require('./example-middlewares/secondMiddleWare');
+		route.use(fMiddle);
+		route.use(sMiddle);
+		var routeCollection = require('./routeCollection').getRouteCollection().routeCollection;
+		route.setRouteCollection(routeCollection);
+		reqInterceptor.on('beforeProcessRequest', function(req,res,routeCollectionconfig) {
+			if(req.url=="/mwplain")
+				{
+					res.writeHead(200, {'Content-Type': 'text/plain'});
+					res.end('this process requires login');
+				}
+		  });
+		minimalweb.spawn("127.0.0.1","3001");
+  		// function end
+  })
 
 describe('server', function(){
   describe('minimalweb-plain-login', function(){
@@ -118,5 +142,10 @@ describe('server', function(){
   	});
     })
   });
+})
+after(function(){
+  	process.kill(process.pid, 'SIGINT');
+})
 });
+
 
