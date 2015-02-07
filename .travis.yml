@@ -4,5 +4,5 @@ node_js:
 - '0.10'
 script: 
  - "./node_modules/mocha/bin/mocha tests/test.js"
-after_success:
-  - coveralls
+#after_success:
+#  - coveralls
