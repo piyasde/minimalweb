@@ -2,7 +2,7 @@
   "name": "minimalweb",
   "description": "A simple web framework with node.js which has provision to support rest api and http request both",
   "author": "Piyas De <piyas.de@gmail.com>",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "main": "index.js",
   "dependencies": {
     "bunyan": "^1.3.3",
@@ -15,7 +15,7 @@
     "formidable": "^1.0.16",
     "fs": "0.0.2",
     "http": "0.0.0",
-    "istanbul": "^0.3.5",	
+    "istanbul": "^0.3.5",
     "mocha": "^2.1.0",
     "mocha-lcov-reporter": "0.0.1",
     "morgan": "^1.5.1",
@@ -44,9 +44,11 @@
   "bugs": {
     "url": "https://github.com/piyasde/minimalweb/issues"
   },
-  "scripts" : { "start" : "node startpoint-test.js",
-  "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
-  "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js" } ,
+  "scripts": {
+    "start": "node startpoint-test.js",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
   "homepage": "https://github.com/piyasde/minimalweb",
   "_shasum": "4f51e54b67ac38d3d37580c1293634e164f8fae1",
   "_from": "minimalweb@*"
