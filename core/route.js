@@ -33,6 +33,10 @@ var mimeTypes = {
 };
 var keyValuePair = [];
 
+/**
+ * Function is not used currently, useful - use it later
+ */
+/*
 function isEmpty(obj) {
     for(var prop in obj) {
         if(obj.hasOwnProperty(prop))
@@ -40,6 +44,7 @@ function isEmpty(obj) {
     }
     return true;
 }
+*/
 
 /**
  * It is used to understand the url is in rest pattern or not 

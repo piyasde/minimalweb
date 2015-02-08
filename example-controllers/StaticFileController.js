@@ -7,7 +7,7 @@ var logger = require('../index').logger;
 var controller = require('../index').abstractController;
 
 var selfController = function () {
-	logger.log("selfController constructed");
+	//logger.log("selfController constructed");
 }
 
 //Extends abstract controller

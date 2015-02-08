@@ -35,7 +35,7 @@ AbstractController.prototype ={
 					res.end(plainString);
 					ri.interceptResponse(req,res);
 					return callback(null,'Done - Plain Process');
-					break;
+					//break;
 				}
 			case 'html':
  				{	
@@ -44,7 +44,7 @@ AbstractController.prototype ={
 					res.end(htmlString);
 					ri.interceptResponse(req,res);	
 					return callback(null,'Done - Html Process');
-					break;
+					//break;
 				}
 			case 'json':
  				{	
@@ -53,7 +53,7 @@ AbstractController.prototype ={
 					res.end(jsonString);
 					ri.interceptResponse(req,res);
 					return callback(null,'Done - Json Process');
-					break;
+					//break;
 				}
 			case 'xml':
  				{	
@@ -62,7 +62,7 @@ AbstractController.prototype ={
 					res.end(xmlString);
 					ri.interceptResponse(req,res);
 					return callback(null,'Done - Xml Process');
-					break;
+					//break;
 				}
 
 			case 'static':
@@ -71,7 +71,7 @@ AbstractController.prototype ={
 					fileHelper.processFile(req,res,fileName);			
 					ri.interceptResponse(req,res);
 					return callback(null,'Done - Static File Process');
-					break;
+					//break;
 				}
 			case 'dynamic':
  				{	
@@ -81,7 +81,7 @@ AbstractController.prototype ={
 					fileHelper.processFile(req,res,fileName);
 					ri.interceptResponse(req,res);			
 					return callback(null,'Done - Dynamic File Process');
-					break;
+					//break;
 				}
 			case 'postdata':
  				{	
@@ -95,7 +95,7 @@ AbstractController.prototype ={
 					var fileName = processOutFileName;
 					if((typeof fileName !=='undefined')&&(fileName !='')){
 						
-						logger.log('last call');
+						//logger.log('last call');
 						fileHelper.processFile(req,res,fileName);
 					}
 					else
@@ -107,7 +107,7 @@ AbstractController.prototype ={
 					processOutFileName ='';
 					ri.interceptResponse(req,res);
 					return callback(null,'Done - Post File Process');
-					break;
+					//break;
 				}
 			
 			default:
@@ -142,12 +142,6 @@ AbstractController.prototype ={
     setXml : function(pXml) {
 	this.processXmlString = pXml;
     },	
-    getProcessType : function() {
-	return this.processType;
-    },			
-    testInherit : function() {
-	logger.log('yes, i am inherited');
-    },
     getRequestInterceptor: function() {
 	return ri;
     }				

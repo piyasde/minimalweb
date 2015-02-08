@@ -20,12 +20,9 @@ var postForm = function(req,res,uploadPath) {
 		});
         })
         .on('error', function(err) {
-            logger.logInfo("an error has occured with form upload");
+            //logger.logInfo("an error has occured with form upload");
             logger.logInfo(err);
             req.resume();
-        })
-        .on('aborted', function(err) {
-            logger.log("user aborted upload");
         })
         .on('end', function() {
             logger.log('-> upload done');

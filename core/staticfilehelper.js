@@ -15,7 +15,7 @@ var mimeTypes = {
 
 
 var staicFileHelper = function() {
-  logger.log("staicFilehelper constructed");
+  //logger.log("staicFilehelper constructed");
 }
 
 staicFileHelper.processFile = function (req,res,filePath) {
@@ -25,7 +25,7 @@ staicFileHelper.processFile = function (req,res,filePath) {
 		{	
 		      var headers = {'Content-type': mimeTypes[path.extname(filePath)]};
 		      if (cacheServer.cachestore[filePath]) {
-			logger.log('cache  deliver');
+			//logger.log('cache  deliver');
 			res.writeHead(200, headers);
 			res.end(cacheServer.cachestore[filePath].content);
 			return;
