@@ -80,8 +80,6 @@ File - `startpoint.js`
 
 ```js
 var minimalweb = require('minimalweb');
-// If we want to use the request before processing
-var reqInterceptor = minimalweb.reqInterceptor;
 
 // Need for routing functionality
 var route = minimalweb.route;
