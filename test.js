@@ -59,6 +59,26 @@ describe('server', function(){
   	});
     })
   });
+  describe('minimalweb-plain-with-request-parameters', function(){
+    it('should return plain text in response', function(done){
+    	request.get('http://127.0.0.1:3001/mwplainreq?mwplain=1').end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(200);
+		expect(res.text).to.equal('This is controller text with name mwplain and value 1');
+		done();
+  	});
+    })
+  });
+  describe('minimalweb-plain-with-request-parameters and /', function(){
+    it('should return plain text in response', function(done){
+    	request.get('http://127.0.0.1:3001/mwplainreq/?mwplain=1').end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(200);
+		expect(res.text).to.equal('This is controller text with name mwplain and value 1');
+		done();
+  	});
+    })
+  });
   describe('minimalweb-json', function(){
     it('should return json in response', function(done){
     	request.get('http://127.0.0.1:3001/mwjson/').end(function(res){
@@ -85,16 +105,6 @@ describe('server', function(){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
                 //need to understand how to get XML
-		done();
-  	});
-    })
-  });
-  describe('minimalweb-method', function(){
-    it('should return xml in response', function(done){
-    	request.get('http://127.0.0.1:3001/mwmethoddo').end(function(res){
-       		expect(res).to.exist;
-		expect(res.status).to.equal(200);
-		expect(res.text).to.equal('<h2>This is controller text from Method </h2>');
 		done();
   	});
     })
@@ -149,7 +159,16 @@ describe('server', function(){
   	});
     })
   }); 		
-  
+  describe('minimalweb-method-rest', function(){
+    it('should return xml in response', function(done){
+    	request.get('http://127.0.0.1:3001/mwmethoddo/1').end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(200);
+		expect(res.text).to.equal('<h2>This is controller text from Method </h2>');
+		done();
+  	});
+    })
+  });
   describe('minimalweb-postForm', function(){
     it('should return json in response', function(done){
 	request.post('http://127.0.0.1:3001/mwpostForm')

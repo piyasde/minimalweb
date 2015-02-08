@@ -22,11 +22,13 @@
 var routeCollection =
 [
 	{requestPath:'/mwplain',executeController:require('./example-controllers/PlainTextController').getPlainTextController(),format:"plain",loginrequired:"true"},
+	{requestPath:'/mwplainreq',executeController:require('./example-controllers/PlainRequestController').getPlainRequestController(),format:"plain"},
 	{requestPath:'/mwplain/:id',executeController:require('./example-controllers/PlainRestController').getPlainRestController(),format:"plain"},
 	{requestPath:'/mwhtml',executeController:require('./example-controllers/PlainHtmlController').getPlainHtmlController(),format:"html"},
 	{requestPath:'/mwjson',executeController:require('./example-controllers/PlainJsonController').getPlainJsonController(),format:"json"},
 	{requestPath:'/mwxml',executeController:require('./example-controllers/PlainXmlController').getPlainXmlController(),format:"xml"},
 	{requestPath:'/mwmethoddo',executeController:require('./example-controllers/methodController').getMethodController(),format:"html",methodName:"do"},   
+	{requestPath:'/mwmethoddo/:id',executeController:require('./example-controllers/methodController').getMethodController(),format:"html",methodName:"do"},   
 	{requestPath:'/mwmethodundo',executeController:require('./example-controllers/methodController').getMethodController(),
 		format:"plain",methodName:"undo"},   
 	{requestPath:'/mwindexpage',

@@ -33,10 +33,6 @@ var mimeTypes = {
 };
 var keyValuePair = [];
 
-/**
- * Function is not used currently, useful - use it later
- */
-/*
 function isEmpty(obj) {
     for(var prop in obj) {
         if(obj.hasOwnProperty(prop))
@@ -44,7 +40,7 @@ function isEmpty(obj) {
     }
     return true;
 }
-*/
+
 
 /**
  * It is used to understand the url is in rest pattern or not 
@@ -188,8 +184,9 @@ var route = function (req, res) {
     if (query.hasOwnProperty(name)) {
         var value = query[name];
         // Do something
+	queryParams[arrCount] = {};
 	queryParams[arrCount].name = name;
-	queryParams[arrCount].value = name;
+	queryParams[arrCount].value = value;
 	arrCount++;
     }
   }
@@ -268,6 +265,10 @@ var route = function (req, res) {
 	  }
 	  else
 	  {
+		if(!isEmpty(query))
+		{
+			requestPath = requestPath.substring(0,(requestPath.indexOf("?")));
+		}
 		// checking for /
 		if(requestPath.lastIndexOf("/")==(requestPath.length-1))
 		{
