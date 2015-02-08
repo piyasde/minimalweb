@@ -6,4 +6,35 @@
 A simple web framework with node.js which has provision to support rest api and http request
 Integrated with Travis CI which is testing against AWS SETUP.
 
-Start with : npm install minimalweb@0.1.6
+```sh
+$ npm install minimalweb@0.1.6
+```
+
+## Framework access
+
+```js
+var minimalweb = require('minimalweb')
+```
+
+### Framework Feature Support
+
+*   Get Method Handling
+*   Post Method Handling
+*   Post Method Handling with Upload
+*   Limited set of REST Support (Upto Now)
+*   Request Parameter Handling
+*   Session Handling
+*   Minimum caching support for static file serving
+*   Routing configuration through JSON Array
+
+### Some features where commuity libraries are used -
+*   Session Handling through express-session
+*   Post Variables Handling through formidable
+
+##### Thanks to all of the contributors in npm registry, whose libray are used to build the current framework
+
+#### License
+
+[MIT](https://github.com/piyasde/minimalweb/blob/master/LICENSE)
+
+   
