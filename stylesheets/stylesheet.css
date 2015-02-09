@@ -858,6 +858,14 @@ footer a:hover {
     background-image: none;
     border-top: solid 1px #ddd;
   }
+  aside#sidebar h3 {
+	margin-bottom: 8px;
+	font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #474747;
+	text-indent: 4px;
+  }
   aside#sidebar a.button {
     display: none;
   }
