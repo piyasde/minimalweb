@@ -121,6 +121,9 @@ Tests are done wih mocha. Main test file is `test.js` in project root.
 
 Code coverage is done with `istanbul`. Report can be found in [Coveralls](https://coveralls.io/r/piyasde/minimalweb).
 
+#### Website
+
+*   [minimalweb.me](http://www.minimalweb.me)
 
 ### Some features where commuity libraries are used -
 *   Session Handling through `express-session`
