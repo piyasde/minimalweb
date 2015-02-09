@@ -1,5 +1,5 @@
 /**
- * Example Controller to get Html
+ * Example Controller to get Xml
  * A controller which can be used to get Html as response
  */
 

@@ -3,8 +3,8 @@
  * A controller which can be used to get Plain text as response
  */
 
-var logger = require('../index').logger;
-var controller = require('../index').abstractController;
+var logger = require('minimalweb').logger;
+var controller = require('minimalweb').abstractController;
 
 var selfController = function () {
 	logger.log("selfController constructed");
