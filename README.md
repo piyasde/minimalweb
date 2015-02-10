@@ -137,7 +137,7 @@ Code coverage is done with `istanbul`. Report can be found in [Coveralls](https:
 #### Left works
 *   Error handling
 *   All REST Pattern Handling 
-*   Provision for genering javascript template engine handling
+*   Provision for generic javascript template engine handling
 
 #### Known Issues
 
