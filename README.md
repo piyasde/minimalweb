@@ -140,8 +140,15 @@ Code coverage is done with `istanbul`. Report can be found in [Coveralls](https:
 *   Provision for generic javascript template engine handling
 
 #### Known Issues
-
-*   Rigorous load testing is required.
+*   Static file handling optimisation
+*   Static file handling through methods in controller
+*   Dynamic file handling through methods in controller
+*   Provision of root path - "/" - redirect mechanism
+*   unit testing of all of the above features
+*   remove current cache
+*   implement cache of ejs
+*   implement cache of node-static
+*   load testing.
 
 #### License
 
