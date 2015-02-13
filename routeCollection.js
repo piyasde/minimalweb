@@ -58,7 +58,13 @@ var routeCollection =
 	{requestPath:'/mwpostFormOut',
 		executeController:require('./example-controllers/PostController').getPostController(),
 		format:"postdata",outputFile :"index1.html", methodName:"do"}, 
-		// Post Handling Controller Call with Method and upload/without upload
+	{requestPath:'/indexdyn',
+		executeController:require('./example-controllers/methodControllerStatic').getMethodController(),
+		responseFile:"index1.html",format:"dynamic", methodName:"getIndexDyn"},  // Get Handling Static File
+	{requestPath:'/indexstc',
+		executeController:require('./example-controllers/methodControllerStatic').getMethodController(),
+		responseFile:"index.html",format:"dynamic", methodName:"getIndexStc"}  // Get Handling Static File
+
 	
 ]
 

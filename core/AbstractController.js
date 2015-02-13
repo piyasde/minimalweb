@@ -77,6 +77,7 @@ AbstractController.prototype ={
  				{	
 					var fileName = processFileName;
 					var jsonString = processJsonString;
+					logger.log('ac--'+jsonString);
 					res.requiredData = jsonString;
 					fileHelper.processFile(req,res,fileName);
 					ri.interceptResponse(req,res);			

@@ -139,6 +139,7 @@ describe('server', function(){
   	});
     })
   });
+	
   describe('minimalweb-methodundo', function(){
     it('should return plain text in response', function(done){
     	request.get('http://127.0.0.1:3001/mwmethodundo').end(function(res){
@@ -169,6 +170,27 @@ describe('server', function(){
   	});
     })
   });
+  describe('minimalweb-method-dynamic-file', function(){
+    it('should return xml in response', function(done){
+    	request.get('http://127.0.0.1:3001/indexdyn/').end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(200);
+		expect(res.text).to.contain('<p>Ram<p>');
+		done();
+  	});
+    })
+  });
+  describe('minimalweb-method-static-file', function(){
+    it('should return xml in response', function(done){
+    	request.get('http://127.0.0.1:3001/indexstc/').end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(200);
+		expect(res.text).to.contain('<h1>This is Index File</h1>');
+		done();
+  	});
+    })
+  });
+	
   describe('minimalweb-postForm', function(){
     it('should return json in response', function(done){
 	request.post('http://127.0.0.1:3001/mwpostForm')
