@@ -24,6 +24,8 @@ describe('serverapps', function(){
 					res.end('this process requires login');
 				}
 		  });
+		minimalweb.setPublicpath("public");
+		minimalweb.setStaticport("5101");
 		minimalweb.spawn("127.0.0.1","3001");
   		// function end
   })
