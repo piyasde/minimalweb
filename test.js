@@ -220,6 +220,7 @@ describe('server', function(){
   	});
     })
   });	
+
   describe('minimalweb-postForm', function(){
     it('should return json in response', function(done){
 	request.post('http://127.0.0.1:3001/mwpostForm')
@@ -228,6 +229,26 @@ describe('server', function(){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
 		expect(res.text).to.contain('{\"person\":{\"name\":\"Ram\"}}');
+		done();
+  	});
+    })
+  });
+  describe('minimalweb-staticserver-test-pass', function(){
+    it('should return 200 in response', function(done){
+	request.get('http://127.0.0.1:5101/css/bootstrap.css')
+	.end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(200);
+		done();
+  	});
+    })
+  });
+  describe('minimalweb-staticserver-test-fail', function(){
+    it('should return 200 in response', function(done){
+	request.get('http://127.0.0.1:5101/css/bootstrap1.css')
+	.end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.not.equal(200);
 		done();
   	});
     })
