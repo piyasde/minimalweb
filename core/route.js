@@ -18,7 +18,7 @@ var maxData = 10 * 1024 * 1024; //2mb
 
 // Session Specific Information 
 var sess = session({ secret: 'our middleware', cookie: { maxAge: 60000 },saveUninitialized: true,resave: true});
-var cacheServer = require('./cache').getCacheServer();
+//var cacheServer = require('./cache').getCacheServer();
 var reqInterceptor = require('./requestInterceptor');
 
 var ri= new reqInterceptor();
@@ -261,7 +261,7 @@ var route = function (req, res) {
 			simpleController.setProcessType(routeCollection[restIndex].format);
 			simpleController.processRequest(req,res);
 		}
-		cacheServer.clean(Date.now());	
+		//cacheServer.clean(Date.now());	
 	  }
 	  else
 	  {
@@ -280,11 +280,14 @@ var route = function (req, res) {
 			{
 				serveFile = true;
 				if(typeof routeCollection[i].responseFile !=='undefined'){
-					var  f = 'public/' + routeCollection[i].responseFile;
+					var  f = config.presentationPath + '/' + routeCollection[i].responseFile;
 					var fileController = routeCollection[i].executeController;
 					fileController.setFileName(f);
 					fileController.setProcessType(routeCollection[i].format);
-					fileController.processRequest(req,res);
+					if(typeof routeCollection[i].methodName !=='undefined')
+						fileController[routeCollection[i].methodName](req,res);
+					else
+						fileController.processRequest(req,res);
 				}
 				else if(typeof routeCollection[i].methodName !=='undefined'){
 					var methodController = routeCollection[i].executeController;
@@ -298,7 +301,7 @@ var route = function (req, res) {
 					simpleController.processRequest(req,res);
 
 				}
-				cacheServer.clean(Date.now());
+				//cacheServer.clean(Date.now());
 			}
 		  }
 	  }

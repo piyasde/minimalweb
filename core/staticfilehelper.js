@@ -1,4 +1,3 @@
-var cacheServer = require('./cache').getCacheServer();
 var logger = require('./logger');
 
 var ejs = require('ejs');
@@ -13,53 +12,26 @@ var mimeTypes = {
   '.ejs': 'text/html',
 };
 
+var serverPath;
 
 var staicFileHelper = function() {
   //logger.log("staicFilehelper constructed");
 }
 
+var json;
 staicFileHelper.processFile = function (req,res,filePath) {
 	fs.exists(filePath, function (exists) { 
 	    if (exists) {
 	      if(typeof res.requiredData==='undefined')
 		{	
 		      var headers = {'Content-type': mimeTypes[path.extname(filePath)]};
-		      if (cacheServer.cachestore[filePath]) {
-			//logger.log('cache  deliver');
-			res.writeHead(200, headers);
-			res.end(cacheServer.cachestore[filePath].content);
-			return;
-		      }
-
-		      var s = fs.createReadStream(filePath).once('open', function () {
-			logger.log('stream deliver');
-			res.writeHead(200, headers);
-			this.pipe(res);
-		      }).once('error', function (e) {
-			logger.log(e);
-			res.writeHead(500);
-			res.end('Internal Server Error...');
-		      });
-
-		      fs.stat(filePath, function (err, stats) {
-			if (stats.size < cacheServer.maxSize) {
-			  var bufferOffset = 0;
-			  cacheServer.cachestore[filePath] = {content: new Buffer(stats.size),
-					    timestamp: Date.now()};
-			  s.on('data', function (data) {
-			    data.copy(cacheServer.cachestore[filePath].content, bufferOffset);
-			    bufferOffset += data.length;
-			  });
-			}
-		      });
-		      return;	
-		}
-	      else
-		{
-		      logger.log(filePath); 	
-		      var headers = {'Content-type': mimeTypes[path.extname(filePath)]};
-			var json = JSON.parse(res.requiredData);
-			ejs.renderFile(filePath,json,
+			logger.log('sfileheplerstattic--'+res.requiredData);
+					
+			if(typeof res.requiredData !=='undefined')
+				{
+					json = JSON.parse(res.requiredData);
+				}
+			ejs.renderFile(filePath,{json:json,filepath:serverPath,cache:true},
 				function(err, result) {
 					if (!err) {
 						res.writeHead(200, headers);
@@ -68,7 +40,33 @@ staicFileHelper.processFile = function (req,res,filePath) {
 					// render or error
 					else {
 						res.writeHead(500);
-						res.end('Internal Server Error...');
+						res.end('Internal Server Error... file path '
+							+filePath+' server path '+serverPath);
+						logger.log(err);
+					}
+			});
+		      return;	
+		}
+	      else
+		{
+			logger.log('sfileheplerdynamic--'+res.requiredData);
+			if(typeof res.requiredData !=='undefined')
+				{
+					json = JSON.parse(res.requiredData);
+				}
+		      var headers = {'Content-type': mimeTypes[path.extname(filePath)]};
+			var json = JSON.parse(res.requiredData);
+			ejs.renderFile(filePath,{json:json,filepath:serverPath,cache:true},
+				function(err, result) {
+					if (!err) {
+						res.writeHead(200, headers);
+						res.end(result);
+					}
+					// render or error
+					else {
+						res.writeHead(500);
+						res.end('Internal Server Error... file path '+filePath+
+							' server path '+serverPath + 'err '+err);
 						logger.log(err);
 					}
 			});
@@ -83,7 +81,9 @@ staicFileHelper.processFile = function (req,res,filePath) {
 	});
 }
 
-
+staicFileHelper.setServerPath = function (filePath) {
+	serverPath = filePath;
+}
 
 module.exports.getStaicFilehelper = function(){
   	return staicFileHelper;
