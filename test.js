@@ -194,7 +194,7 @@ describe('server', function(){
     it('should return status 500 in response', function(done){
     	request.get('http://127.0.0.1:3001/indexstcerr/').end(function(res){
        		expect(res).to.exist;
-		expect(res.status).to.equal(200);
+		expect(res.status).to.equal(500);
 		done();
   	});
     })
