@@ -64,6 +64,9 @@ staicFileHelper.processFile = function (req,res,filePath) {
 					}
 					// render or error
 					else {
+						logger.logInfo('Internal Server Error');
+						logger.logWarn('Internal Server Error');
+			
 						res.writeHead(500);
 						res.end('Internal Server Error... file path '+filePath+
 							' server path '+serverPath + 'err '+err);
