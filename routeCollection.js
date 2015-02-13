@@ -58,13 +58,23 @@ var routeCollection =
 	{requestPath:'/mwpostFormOut',
 		executeController:require('./example-controllers/PostController').getPostController(),
 		format:"postdata",outputFile :"index1.html", methodName:"do"}, 
+		// Post Handling Controller Call with Method and upload/without upload
 	{requestPath:'/indexdyn',
 		executeController:require('./example-controllers/methodControllerStatic').getMethodController(),
 		responseFile:"index1.html",format:"dynamic", methodName:"getIndexDyn"},  // Get Handling Static File
 	{requestPath:'/indexstc',
 		executeController:require('./example-controllers/methodControllerStatic').getMethodController(),
-		responseFile:"index.html",format:"dynamic", methodName:"getIndexStc"}  // Get Handling Static File
-
+		responseFile:"index.html",format:"dynamic", methodName:"getIndexStc"},  // Get Handling Static File
+	{requestPath:'/indexdynerr',
+		executeController:require('./example-controllers/methodControllerStatic').getMethodController(),
+		responseFile:"index1_error.html",format:"dynamic", methodName:"getIndexDynError"},  // Get Handling Static File
+	{requestPath:'/indexstcnosuchpage',
+		executeController:require('./example-controllers/methodControllerStatic').getMethodController(),
+		responseFile:"notexists.html",format:"dynamic", methodName:"getIndexStcNoSuchPage"},  // Get Handling Static File
+	{requestPath:'/indexstcerr',
+		executeController:require('./example-controllers/methodControllerStatic').getMethodController(),
+		responseFile:"index1_static_error.html",format:"dynamic", methodName:"getIndexStcError"}  // Get Handling Static File
+	
 	
 ]
 

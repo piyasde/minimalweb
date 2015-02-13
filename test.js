@@ -171,7 +171,7 @@ describe('server', function(){
     })
   });
   describe('minimalweb-method-dynamic-file', function(){
-    it('should return xml in response', function(done){
+    it('should return dynamic file in response', function(done){
     	request.get('http://127.0.0.1:3001/indexdyn/').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
@@ -181,7 +181,7 @@ describe('server', function(){
     })
   });
   describe('minimalweb-method-static-file', function(){
-    it('should return xml in response', function(done){
+    it('should return static file in response', function(done){
     	request.get('http://127.0.0.1:3001/indexstc/').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
@@ -190,7 +190,34 @@ describe('server', function(){
   	});
     })
   });
-	
+  describe('minimalweb-method-static-error', function(){
+    it('should return status 500 in response', function(done){
+    	request.get('http://127.0.0.1:3001/indexstcerr/').end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(500);
+		done();
+  	});
+    })
+  });
+  describe('minimalweb-method-dynamic-error', function(){
+    it('should return status 500 in response', function(done){
+    	request.get('http://127.0.0.1:3001/indexdynerr/').end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(500);
+		done();
+  	});
+    })
+  });	
+  describe('minimalweb-method-static-nosuchpage', function(){
+    it('should return status nosuchpage in response', function(done){
+    	request.get('http://127.0.0.1:3001/indexstcnosuchpage/').end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(200);
+		expect(res.text).to.contain('No such page found');
+		done();
+  	});
+    })
+  });	
   describe('minimalweb-postForm', function(){
     it('should return json in response', function(done){
 	request.post('http://127.0.0.1:3001/mwpostForm')
