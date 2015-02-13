@@ -7,7 +7,6 @@ var logger = require('../index').logger;
 var controller = require('../index').abstractController;
 
 var MethodController = function() {
-  logger.log("MethodController constructed");
 }
 
 //Extends abstract controller

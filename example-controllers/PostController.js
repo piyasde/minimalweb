@@ -9,7 +9,6 @@ var controller = require('../index').abstractController;
 var postForm = require('../index').postForm;
 
 var PostController = function() {
-  logger.log("constructed");
 }
 
 //Extends abstract controller
