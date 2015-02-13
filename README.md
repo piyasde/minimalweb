@@ -13,7 +13,7 @@ The view can be attached in Configuration or can be injected from Controller.
 It is integrated with Travis CI and Codeship for Continuous Building and Code Coverage Report can be found in Coveralls. 
 
 ```sh
-$ npm install minimalweb@0.1.6
+$ npm install minimalweb
 ```
 
 ## Framework access
@@ -137,12 +137,18 @@ Code coverage is done with `istanbul`. Report can be found in [Coveralls](https:
 #### Left works
 *   Error handling
 *   All REST Pattern Handling 
-*   Provision for genering javascript template engine handling
+*   Provision for generic javascript template engine handling
 
 #### Known Issues
-
-*   After publishing in npm (node package manager) still now `npm install minimalweb` is giving `No version   provided in package.json` error. So to use the package, one should install it with current version no - for current version, it is `npm install minimalweb@0.1.6`
-
+*   Static file handling optimisation
+*   Static file handling through methods in controller
+*   Dynamic file handling through methods in controller
+*   Provision of root path - "/" - redirect mechanism
+*   unit testing of all of the above features
+*   remove current cache
+*   implement cache of ejs
+*   implement cache of node-static
+*   load testing.
 
 #### License
 
