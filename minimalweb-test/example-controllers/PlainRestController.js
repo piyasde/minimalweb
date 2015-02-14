@@ -33,7 +33,7 @@ selfController.getRequestInterceptor().on('afterProcessResponse', function(req,r
 	//Guaranteed Asynchronous Functionality
 	process.nextTick(function() 
         {
-	    logger.log("sample request processing after process response");		  
+	    logger.log("sample request processing after process response ");		  
 	});
 });
 
