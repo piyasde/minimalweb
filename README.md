@@ -145,17 +145,11 @@ Code coverage is done with `istanbul`. Report can be found in [Coveralls](https:
 
 ##### Version 0.1.8 Changes
 ~~Static file handling optimisation~~
-
 ~~Static file handling through methods in controller~~
-
 ~~Dynamic file handling through methods in controller~~
-
 ~~remove current cache~~
-
 ~~implement cache of ejs~~
-
 ~~implement cache of node-static~~
-
 
 #### License
 
