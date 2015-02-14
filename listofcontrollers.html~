@@ -13,17 +13,17 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title>Minimalweb Explanation of StaticFileController</title>
+    <title>Minimalweb List of Controllers</title>
   </head>
 
   <body>
     <header>
       <div class="inner">
-        <h1><a href="http://www.minimalweb.me">Minimalweb</a></h1>
+        <h1>Minimalweb</h1>
         <h2>A simple web framework with node.js which has provision to support rest api and http request both</h2>
         <a href="https://github.com/piyasde/minimalweb"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
       </div>
- <div class="inner">
+	 <div class="inner">
 	<iframe src="https://ghbtns.com/github-btn.html?user=piyasde&repo=minimalweb&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
 	<iframe src="https://ghbtns.com/github-btn.html?user=piyasde&repo=minimalweb&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
 	
@@ -38,53 +38,25 @@
 <a href="https://travis-ci.org/piyasde/minimalweb.svg?branch=master"><img src="https://travis-ci.org/piyasde/minimalweb.svg?branch=master" alt="Build Status"></a>
 <a href="https://coveralls.io/r/piyasde/minimalweb?branch=master"><img src="https://coveralls.io/repos/piyasde/minimalweb/badge.svg?branch=master" alt="Coverage Status"></a>
 <a href="https://codeship.com/projects/61652"> <img src="https://codeship.com/projects/27b39020-9126-0132-1525-6e434ff849c7/status?branch=master" alt="Codeship Status for piyasde/minimalweb"></a></p>
-<h4>Explanation of StaticFileController</h4>
-<p>Definining configuration of route in <strong>routecollection</strong> assuming the controller is in &#39;example-controllers&#39; folder</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> routeCollection =
-[
-        {requestPath:<span class="hljs-string">'/mwindexpage'</span>,
-        executeController:<span class="hljs-built_in">require</span>(<span class="hljs-string">'./example-controllers/StaticFileController'</span>).getStaticFileController(),
-        responseFile:<span class="hljs-string">"index.html"</span>,format:<span class="hljs-string">"static"</span>}
-
-]
-</code></pre>
-<p>Controller to get File - </p>
-<p>Code of the Controller -</p>
+<h4>List of Controllers</h4>
+<p>
 <ul>
-<li>Access the Application Logger<pre><code class="lang-js"><span class="hljs-keyword">var</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'minimalweb'</span>).logger;
-</code></pre>
-</li>
-<li>Initialize Base Controller<pre><code class="lang-js"><span class="hljs-keyword">var</span> controller = <span class="hljs-built_in">require</span>(<span class="hljs-string">'minimalweb'</span>).abstractController;
-</code></pre>
-</li>
-<li>Controller Constructor<pre><code class="lang-js"><span class="hljs-keyword">var</span> selfController = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-  logger.log(<span class="hljs-string">"selfController constructed"</span>);
-}
-</code></pre>
-</li>
-<li>Extends abstract controller<pre><code class="lang-js">selfController.__proto__ = controller;
-</code></pre>
-</li>
-<li>Request Processing (Here the file is set for response through configuration above)<pre><code class="lang-js">selfController.processRequest = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req,res)</span> </span>{
-  <span class="hljs-comment">// process specific business logic</span>
-  <span class="hljs-comment">// set the processed string to controller setJson method</span>
-  <span class="hljs-comment">// place to use any service callback</span>
-      selfController.process(req,res,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err,content)</span></span>{
-      logger.log(<span class="hljs-string">'content -'</span>+content);
-  });
-}
-</code></pre>
-</li>
-<li>Convention to expose the controller as module<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports.getStaticFileController = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
-  <span class="hljs-keyword">return</span> MethodController;
-};
-</code></pre>
-</li>
+<li><a href="plaintextcontroller.html"><strong>PlainTextController</strong></a>        - featured with <code>plain text</code> handling</li>
+<li><a href="plainrequestcontroller.html"><strong>PlainRequestController</strong></a>     - featured with <code>Request Parameter</code> handling</li>
+<li><a href="plainrestcontroller.html"><strong>PlainRestController</strong></a>        - featured with <code>Rest API</code> handling</li>
+<li><a href="plainhtmlcontroller.html"><strong>PlainHtmlController</strong></a>        - featured with <code>plain text</code> handling</li>
+<li><a href="plainxmlcontroller.html"><strong>PlainXmlController</strong></a>         - featured with <code>xml</code> handling</li>
+<li><a href="plainjsoncontroller.html"><strong>PlainJsonController</strong></a>        - featured with <code>json</code> handling</li>
+<li><a href="methodcontroller.html"><strong>MethodController</strong></a>           - featured with <code>method</code> handling in Controller</li>
+<li><a href="staticfilecontroller.html"><strong>StaticFileController</strong></a>       - featured with <code>static file</code> handling</li>
+<li><a href="dynamicfilecontroller.html"><strong>DynamicFileController</strong></a>      - featured with <code>dynamic file</code> handling i.e. render with server side variable values.</li>
+<li><a href="postcontroller.html"><strong>PostController</strong></a>             - featured with <code>post</code> handling with/without upload</li>
 </ul>
+
+</p>
 
 <h4>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h4>
-
 <p><a href="https://github.com/piyasde/minimalweb/blob/master/LICENSE">MIT</a></p>
         </section>
 
@@ -96,9 +68,8 @@
 	text-indent: 4px;">Important to know</h3>
           <p style="margin-bottom: 2px;"><a href="index.html"><strong>Getting Started</strong></a></p>	
           <p style="margin-bottom: 2px;"><a href="routerconfigurations.html"><strong>Router Configuration Details</strong></a></p>
-	  <p style="margin-bottom: 2px;"><a href="listofcontrollers.html"><strong>List of Controllers</strong></a></p>
 	  <p style="margin-bottom: 2px;"><a href="reqresintercept.html"><strong>Request/Response Interceptors</strong></a></p>
-	  <p style="margin-bottom: 2px;"><a href="middlewarehowto.html"><strong>Middlewares: How to?</strong></a></p>
+	  <p style="margin-bottom: 2px;"><a href="middlewarehowto	.html"><strong>Middlewares: How to?</strong></a></p>
 	  <h3 style="font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
 	font-size: 14px;
 	font-weight: bold;

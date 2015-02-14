@@ -13,13 +13,13 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title>Minimalweb Explanation of StaticFileController</title>
+    <title>Minimalweb Middlewares: How to?</title>
   </head>
 
   <body>
     <header>
       <div class="inner">
-        <h1><a href="http://www.minimalweb.me">Minimalweb</a></h1>
+        <h1>Minimalweb</h1>
         <h2>A simple web framework with node.js which has provision to support rest api and http request both</h2>
         <a href="https://github.com/piyasde/minimalweb"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
       </div>
@@ -28,7 +28,7 @@
 	<iframe src="https://ghbtns.com/github-btn.html?user=piyasde&repo=minimalweb&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
 	
       </div>
-      
+     
     </header>
 
     <div id="content-wrapper">
@@ -38,49 +38,80 @@
 <a href="https://travis-ci.org/piyasde/minimalweb.svg?branch=master"><img src="https://travis-ci.org/piyasde/minimalweb.svg?branch=master" alt="Build Status"></a>
 <a href="https://coveralls.io/r/piyasde/minimalweb?branch=master"><img src="https://coveralls.io/repos/piyasde/minimalweb/badge.svg?branch=master" alt="Coverage Status"></a>
 <a href="https://codeship.com/projects/61652"> <img src="https://codeship.com/projects/27b39020-9126-0132-1525-6e434ff849c7/status?branch=master" alt="Codeship Status for piyasde/minimalweb"></a></p>
-<h4>Explanation of StaticFileController</h4>
-<p>Definining configuration of route in <strong>routecollection</strong> assuming the controller is in &#39;example-controllers&#39; folder</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> routeCollection =
-[
-        {requestPath:<span class="hljs-string">'/mwindexpage'</span>,
-        executeController:<span class="hljs-built_in">require</span>(<span class="hljs-string">'./example-controllers/StaticFileController'</span>).getStaticFileController(),
-        responseFile:<span class="hljs-string">"index.html"</span>,format:<span class="hljs-string">"static"</span>}
-
-]
-</code></pre>
-<p>Controller to get File - </p>
-<p>Code of the Controller -</p>
+<h4>Middlewares: How to?</h4>
+<p>Central Request Interceptor Support</p>
 <ul>
-<li>Access the Application Logger<pre><code class="lang-js"><span class="hljs-keyword">var</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'minimalweb'</span>).logger;
-</code></pre>
-</li>
-<li>Initialize Base Controller<pre><code class="lang-js"><span class="hljs-keyword">var</span> controller = <span class="hljs-built_in">require</span>(<span class="hljs-string">'minimalweb'</span>).abstractController;
-</code></pre>
-</li>
-<li>Controller Constructor<pre><code class="lang-js"><span class="hljs-keyword">var</span> selfController = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-  logger.log(<span class="hljs-string">"selfController constructed"</span>);
-}
-</code></pre>
-</li>
-<li>Extends abstract controller<pre><code class="lang-js">selfController.__proto__ = controller;
-</code></pre>
-</li>
-<li>Request Processing (Here the file is set for response through configuration above)<pre><code class="lang-js">selfController.processRequest = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req,res)</span> </span>{
-  <span class="hljs-comment">// process specific business logic</span>
-  <span class="hljs-comment">// set the processed string to controller setJson method</span>
-  <span class="hljs-comment">// place to use any service callback</span>
-      selfController.process(req,res,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err,content)</span></span>{
-      logger.log(<span class="hljs-string">'content -'</span>+content);
-  });
-}
-</code></pre>
-</li>
-<li>Convention to expose the controller as module<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports.getStaticFileController = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
-  <span class="hljs-keyword">return</span> MethodController;
-};
-</code></pre>
+<li>We can write request interceptor in Server start point</li>
+<li><p>General Use cases -</p>
+<ul>
+<li>Use of Request Interceptor before processing actual request </li>
+</ul>
+<p>Generally, we will use this event to authorise the user here,</p>
+<ul>
+<li>We can check any url directly, or</li>
+<li>We iterate through route collection configuration and check &#39;loginrequired&#39; property (discussed in &lt;&lt;&gt;&gt;)</li>
+</ul>
 </li>
 </ul>
+<p>The sample code will be like -</p>
+<pre><code class="lang-js"><span class="hljs-comment">// If we want to use the request before processing</span>
+<span class="hljs-keyword">var</span> reqInterceptor = minimalweb.reqInterceptor;
+
+reqInterceptor.on(<span class="hljs-string">'beforeProcessRequest'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req,res,routeCollectionconfig)</span> </span>{
+    <span class="hljs-comment">// 1. If we want to directly check the URL for some business logic</span>
+    <span class="hljs-keyword">if</span>(req.url==<span class="hljs-string">"/mwplain"</span>)
+        {
+            res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'text/plain'</span>});
+            res.end(<span class="hljs-string">'this process requires login'</span>);
+        }
+
+    <span class="hljs-comment">//2. We may write all check on route collection here</span>
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;routeCollectionconfig.length;i++){
+        <span class="hljs-keyword">if</span>(req.url==routeCollectionconfig[i].requestPath)
+        {        
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> routeCollectionconfig[i].loginrequired !==<span class="hljs-string">'undefined'</span>){
+                res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'text/plain'</span>});
+                res.end(<span class="hljs-string">'this process requires login'</span> + <span class="hljs-string">'\n'</span>);
+            }
+        }
+    }
+  });
+</code></pre>
+<p>After Response Interceptor Support at Controller Level</p>
+<ul>
+<li>We can write response interceptor in any Controller</li>
+<li><p>General Use cases -</p>
+<ul>
+<li>Use of Request Interceptor after response </li>
+</ul>
+<p>Generally, we will use this event to run any service like shooting mail etc.,</p>
+</li>
+</ul>
+<p>The sample code will be like -</p>
+<pre><code class="lang-js"><span class="hljs-comment">//Access Application Logger</span>
+<span class="hljs-keyword">var</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'minimalweb'</span>).logger;
+<span class="hljs-comment">// Initialise base controller</span>
+<span class="hljs-keyword">var</span> controller = <span class="hljs-built_in">require</span>(<span class="hljs-string">'minimalweb'</span>).abstractController;
+<span class="hljs-comment">// Constructor</span>
+<span class="hljs-keyword">var</span> selfController = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    logger.log(<span class="hljs-string">"selfController constructed"</span>);
+}
+<span class="hljs-comment">//Extends base controller</span>
+selfController.__proto__ = controller;
+
+<span class="hljs-comment">// Processing main request</span>
+<span class="hljs-comment">// This code is omitted as this is not in perview of the Interceptor use</span>
+
+<span class="hljs-comment">// Use of after response interceptor </span>
+selfController.getRequestInterceptor().on(<span class="hljs-string">'afterProcessResponse'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req,res)</span> </span>{
+    <span class="hljs-comment">// We can use this event after request processing </span>
+    <span class="hljs-comment">//Guaranteed Asynchronous Functionality</span>
+    process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> 
+        </span>{
+        logger.log(<span class="hljs-string">"sample request processing after process response"</span>);          
+    });
+});
+</code></pre>
 
 <h4>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h4>
@@ -98,7 +129,6 @@
           <p style="margin-bottom: 2px;"><a href="routerconfigurations.html"><strong>Router Configuration Details</strong></a></p>
 	  <p style="margin-bottom: 2px;"><a href="listofcontrollers.html"><strong>List of Controllers</strong></a></p>
 	  <p style="margin-bottom: 2px;"><a href="reqresintercept.html"><strong>Request/Response Interceptors</strong></a></p>
-	  <p style="margin-bottom: 2px;"><a href="middlewarehowto.html"><strong>Middlewares: How to?</strong></a></p>
 	  <h3 style="font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
 	font-size: 14px;
 	font-weight: bold;
