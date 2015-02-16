@@ -133,10 +133,11 @@ Code coverage is done with `istanbul`. Report can be found in [Coveralls](https:
 
 ##### Thanks to all of the contributors in npm registry, whose libray are used to build the current framework
 
-#### Left works
-*   Error handling
+#### Left works and good-to-have features listing
+*   Left Errors handling
 *   All REST Pattern Handling 
 *   Provision for generic javascript template engine handling
+*   Inclusion of Authentication framework
 
 #### Known Issues
 *   Provision of root path - "/" - redirect mechanism
