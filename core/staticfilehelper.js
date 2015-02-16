@@ -20,8 +20,8 @@ var staicFileHelper = function() {
 
 var json;
 staicFileHelper.processFile = function (req,res,filePath) {
-	fs.exists(filePath, function (exists) { 
-	    if (exists) {
+	//fs.exists(filePath, function (exists) { 
+	    //if (exists) {
 	      if(typeof res.requiredData==='undefined')
 		{	
 		      var headers = {'Content-type': mimeTypes[path.extname(filePath)]};
@@ -75,13 +75,13 @@ staicFileHelper.processFile = function (req,res,filePath) {
 			});
 		      return;	
 		}
-	    }
-	    else
-		{
-		  	  res.writeHead(200, {'Content-Type': 'text/plain'});
-			  res.end('No such page found\n');
-		}	
-	});
+	    //}
+	    //else
+		//{
+		//  	  res.writeHead(200, {'Content-Type': 'text/plain'});
+		//	  res.end('No such page found\n');
+		//}	
+	//});
 }
 
 staicFileHelper.setServerPath = function (filePath) {

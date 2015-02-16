@@ -210,7 +210,7 @@ describe('server', function(){
   	});
     })
   });	
-  describe('minimalweb-method-static-nosuchpage', function(){
+  /*describe('minimalweb-method-static-nosuchpage', function(){
     it('should return status nosuchpage in response', function(done){
     	request.get('http://127.0.0.1:3001/indexstcnosuchpage/').end(function(res){
        		expect(res).to.exist;
@@ -219,7 +219,7 @@ describe('server', function(){
 		done();
   	});
     })
-  });	
+  });*/	
 
   describe('minimalweb-postForm', function(){
     it('should return json in response', function(done){
