@@ -73,7 +73,7 @@ var routeCollection =
 		responseFile:"notexists.html",format:"dynamic", methodName:"getIndexStcNoSuchPage"},  // Get Handling Static File
 	{requestPath:'/indexstcerr',
 		executeController:require('./example-controllers/methodControllerStatic').getMethodController(),
-		responseFile:"index1_static_error.html",format:"dynamic", methodName:"getIndexStcError"}  // Get Handling Static File
+		responseFile:"index1_static_error.html",format:"static", methodName:"getIndexStcError"}  // Get Handling Static File
 	
 	
 ]
