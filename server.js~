@@ -54,7 +54,7 @@ route.use(morgan('combined', {stream: accessLogStream}));
 
 
 // Creation of the HTTP Server	 
-var minimalWeb = function(host,port,defaultfile) {
+var minimalWeb = function(host,port) {
 	var server = http.createServer(function (req, res) {
 	  route.injectSession(req,res);
 	  route.route(req,res,defaultfile);
