@@ -57,7 +57,7 @@ route.use(morgan('combined', {stream: accessLogStream}));
 var minimalWeb = function(host,port) {
 	var server = http.createServer(function (req, res) {
 	  route.injectSession(req,res);
-	   route.route(req,res);
+	  route.route(req,res,defaultfile);
 	}).listen(port, host);
 	
 };

@@ -16,6 +16,7 @@ var staticpath = "public";
 var staticport = "3101";
 var staticserver;
 var staticserverondiffenv;
+var defaultfile;
 
 
 var setStaticport = function(port){
@@ -30,6 +31,9 @@ var startStaticServerOnDiffAddr = function(path){
 	staticserverondiffenv = path;	
 }
 
+var setDefaultFile = function(file){
+	defaultfile = file||"index.html";	
+}
 
 
 function spawn(host,port)
@@ -69,7 +73,7 @@ function spawn(host,port)
 	}
 	
 	//startStaticServer(staticserverport,'public');
-	server.minimalWeb(host,port);
+	server.minimalWeb(host,port,defaultfile);
 }
 module.exports.spawn = spawn;
 module.exports.reqInterceptor = server.requestInterceptor;
@@ -79,5 +83,6 @@ module.exports.abstractController = controller;
 module.exports.postForm = postForm;
 module.exports.setStaticport = setStaticport;
 module.exports.setPublicpath = setPublicpath;
+module.exports.setDefaultFile = setDefaultFile;
 module.exports.startStaticServerOnDiffAddr = startStaticServerOnDiffAddr;
 

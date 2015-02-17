@@ -20,6 +20,7 @@ var maxData = 10 * 1024 * 1024; //2mb
 var sess = session({ secret: 'our middleware', cookie: { maxAge: 60000 },saveUninitialized: true,resave: true});
 //var cacheServer = require('./cache').getCacheServer();
 var reqInterceptor = require('./requestInterceptor');
+var staticFileController = require('./StaticFileController');
 
 var ri= new reqInterceptor();
 var restIndex = 0;
@@ -307,8 +308,28 @@ var route = function (req, res) {
 	  }
 	  if(!serveFile)
 		{
-		  res.writeHead(200, {'Content-Type': 'text/plain'});
-		  res.end('No such resource found\n');
+		  if(url.parse(req.url,true).pathname==="/"||url.parse(req.url,true).pathname==="")
+			{
+				//parse default static file
+				//console.log('1111');
+				if(typeof defaultfile === 'undefined')
+					{
+						defaultfile = "index.html";
+					}
+				var  f = config.presentationPath + '/' + defaultfile;
+				var fileController = staticFileController.getStaticFileController();
+				fileController.setFileName(f);
+				fileController.setProcessType("static");
+				//console.log('2222');
+				fileController.processRequest(req,res);
+				return;
+			}
+  		   else
+			{	
+		  		res.writeHead(200, {'Content-Type': 'text/plain'});
+				res.end('No such resource found\n');
+			}
+		}
 		}		
 	
   } 

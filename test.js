@@ -24,6 +24,7 @@ describe('serverapps', function(){
 					res.end('this process requires login');
 				}
 		  });
+		minimalweb.setDefaultFile("default.html");
 		minimalweb.setPublicpath("public");
 		minimalweb.setStaticport("5101");
 		minimalweb.spawn("127.0.0.1","3001");
@@ -210,16 +211,26 @@ describe('server', function(){
   	});
     })
   });	
-  /*describe('minimalweb-method-static-nosuchpage', function(){
-    it('should return status nosuchpage in response', function(done){
-    	request.get('http://127.0.0.1:3001/indexstcnosuchpage/').end(function(res){
+  describe('minimalweb-method-/-indicator', function(){
+    it('should return index.html in response', function(done){
+    	request.get('http://127.0.0.1:3001/').end(function(res){
        		expect(res).to.exist;
 		expect(res.status).to.equal(200);
-		expect(res.text).to.contain('No such page found');
+		expect(res.text).to.contain('<h1>This is Index File</h1>');
 		done();
   	});
     })
-  });*/	
+  });
+  describe('minimalweb-method-blank-indicator', function(){
+    it('should return index.html in response', function(done){
+    	request.get('http://127.0.0.1:3001').end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(200);
+		expect(res.text).to.contain('<h1>This is Index File</h1>');
+		done();
+  	});
+    })
+  });
 
   describe('minimalweb-postForm', function(){
     it('should return json in response', function(done){
@@ -257,6 +268,7 @@ describe('server', function(){
 after(function(){
   	process.kill(process.pid, 'SIGINT');
 })
+
 });
 
 
