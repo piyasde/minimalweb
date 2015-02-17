@@ -329,7 +329,7 @@ var route = function (req, res) {
 		  		res.writeHead(200, {'Content-Type': 'text/plain'});
 				res.end('No such resource found\n');
 			}
-		}
+		
 		}		
 	
   } 
