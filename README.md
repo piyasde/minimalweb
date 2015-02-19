@@ -140,9 +140,9 @@ Code coverage is done with `istanbul`. Report can be found in [Coveralls](https:
 *   Inclusion of Authentication framework
 
 #### Known Issues
-*   Provision of root path - "/" - redirect mechanism
+*   ~~Provision of root path - "/" - redirect mechanism~~
 *   unit testing of all of the above features
-*   load testing.
+*   load testing (Partially done).
 
 ##### Version 0.1.8 Changes
 * ~~Static file handling optimisation~~
