@@ -53,6 +53,9 @@ var routeCollection =
 		executeController:require('./example-controllers/StaticFileController').getStaticFileController(),
 		responseFile:"product.html",format:"static"},  // Get Handling Static File
 	{requestPath:'/mwpostForm',
+		executeController:require('./example-controllers/StaticFileController').getStaticFileController(),
+		responseFile:"index.html",format:"static"},  // Get Handling Static File
+	{requestPath:'/mwpostForm',
 		executeController:require('./example-controllers/PostController').getPostController(),
 		format:"postdata", methodName:"do"}, // Post Handling Controller Call with Method and upload/without upload
 	{requestPath:'/mwpostFormOut',

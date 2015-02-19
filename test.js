@@ -231,6 +231,17 @@ describe('server', function(){
   	});
     })
   });
+   describe('minimalweb-postForm-get', function(){
+    it('should return static file in response', function(done){
+	request.get('http://127.0.0.1:3001/mwpostForm')
+	.end(function(res){
+       		expect(res).to.exist;
+		expect(res.status).to.equal(200);
+		expect(res.text).to.contain('<h1>This is Index File</h1>');
+		done();
+  	});
+    })
+  });
 
   describe('minimalweb-postForm', function(){
     it('should return json in response', function(done){

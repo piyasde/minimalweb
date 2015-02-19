@@ -11,16 +11,14 @@ var url = require("url"),
 
 var config = require('../config');
 var logger = require('./logger');
+var staticFileController = require('./StaticFileController');
 var routeCollection;
-//var methodCollection;
 var serveFile = false;
 var maxData = 10 * 1024 * 1024; //2mb
 
 // Session Specific Information 
 var sess = session({ secret: 'our middleware', cookie: { maxAge: 60000 },saveUninitialized: true,resave: true});
-//var cacheServer = require('./cache').getCacheServer();
 var reqInterceptor = require('./requestInterceptor');
-var staticFileController = require('./StaticFileController');
 
 var ri= new reqInterceptor();
 var restIndex = 0;
@@ -162,7 +160,7 @@ var setRouteCollection = function(collection){
 }
 
 
-var route = function (req, res) {
+var route = function (req, res,defaultfile) {
   if(typeof routeCollection ==='undefined')
 	{
 		logger.log('Nothing is set at route...');
@@ -176,7 +174,6 @@ var route = function (req, res) {
   });    
   // A place to create request parameters in json
   var requestPath = req.url;
-  logger.log('requestPath is '+requestPath);
   var query = url.parse(req.url,true).query;
   var queryParams = [];
   var arrCount = 0;
@@ -279,6 +276,11 @@ var route = function (req, res) {
 		  for(i=0;i<routeCollection.length;i++){
 			if(requestPath==routeCollection[i].requestPath)
 			{
+				if(routeCollection[i].format==='postdata')
+				{
+					continue;
+				}
+
 				serveFile = true;
 				if(typeof routeCollection[i].responseFile !=='undefined'){
 					var  f = config.presentationPath + '/' + routeCollection[i].responseFile;
@@ -311,7 +313,6 @@ var route = function (req, res) {
 		  if(url.parse(req.url,true).pathname==="/"||url.parse(req.url,true).pathname==="")
 			{
 				//parse default static file
-				//console.log('1111');
 				if(typeof defaultfile === 'undefined')
 					{
 						defaultfile = "index.html";
@@ -320,7 +321,6 @@ var route = function (req, res) {
 				var fileController = staticFileController.getStaticFileController();
 				fileController.setFileName(f);
 				fileController.setProcessType("static");
-				//console.log('2222');
 				fileController.processRequest(req,res);
 				return;
 			}
@@ -329,7 +329,6 @@ var route = function (req, res) {
 		  		res.writeHead(200, {'Content-Type': 'text/plain'});
 				res.end('No such resource found\n');
 			}
-		
 		}		
 	
   } 
