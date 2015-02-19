@@ -141,6 +141,7 @@ Code coverage is done with `istanbul`. Report can be found in [Coveralls](https:
 
 #### Known Issues
 *   ~~Provision of root path - "/" - redirect mechanism~~
+*   ~~Provision for get and post on same route~~
 *   unit testing of all of the above features
 *   load testing (Partially done).
 
