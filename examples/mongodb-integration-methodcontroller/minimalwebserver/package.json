@@ -1,0 +1,12 @@
+{
+  "name": "minimalweb-mongo-integration",
+  "description": "Integration with mongodb and minimalweb",
+  "author": {
+    "name": "Piyas De",
+    "email": "piyas.de@gmail.com"
+  },
+  "dependencies": {
+    "minimalweb": "^0.1.8",
+    "mongojs": "^0.18.1"
+  }
+}
