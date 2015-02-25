@@ -39,78 +39,33 @@
 <a href="https://coveralls.io/r/piyasde/minimalweb?branch=master"><img src="https://coveralls.io/repos/piyasde/minimalweb/badge.svg?branch=master" alt="Coverage Status"></a>
 <a href="https://codeship.com/projects/61652"> <img src="https://codeship.com/projects/27b39020-9126-0132-1525-6e434ff849c7/status?branch=master" alt="Codeship Status for piyasde/minimalweb"></a></p>
 <h4>Middlewares: How to?</h4>
-<p>Central Request Interceptor Support</p>
-<ul>
-<li>We can write request interceptor in Server start point</li>
-<li><p>General Use cases -</p>
-<ul>
-<li>Use of Request Interceptor before processing actual request </li>
-</ul>
-<p>Generally, we will use this event to authorise the user here,</p>
-<ul>
-<li>We can check any url directly, or</li>
-<li>We iterate through route collection configuration and check &#39;loginrequired&#39; property (discussed in &lt;&lt;&gt;&gt;)</li>
-</ul>
-</li>
-</ul>
-<p>The sample code will be like -</p>
-<pre><code class="lang-js"><span class="hljs-comment">// If we want to use the request before processing</span>
-<span class="hljs-keyword">var</span> reqInterceptor = minimalweb.reqInterceptor;
-
-reqInterceptor.on(<span class="hljs-string">'beforeProcessRequest'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req,res,routeCollectionconfig)</span> </span>{
-    <span class="hljs-comment">// 1. If we want to directly check the URL for some business logic</span>
-    <span class="hljs-keyword">if</span>(req.url==<span class="hljs-string">"/mwplain"</span>)
-        {
-            res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'text/plain'</span>});
-            res.end(<span class="hljs-string">'this process requires login'</span>);
-        }
-
-    <span class="hljs-comment">//2. We may write all check on route collection here</span>
-    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;routeCollectionconfig.length;i++){
-        <span class="hljs-keyword">if</span>(req.url==routeCollectionconfig[i].requestPath)
-        {        
-            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> routeCollectionconfig[i].loginrequired !==<span class="hljs-string">'undefined'</span>){
-                res.writeHead(<span class="hljs-number">200</span>, {<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'text/plain'</span>});
-                res.end(<span class="hljs-string">'this process requires login'</span> + <span class="hljs-string">'\n'</span>);
-            }
-        }
-    }
-  });
-</code></pre>
-<p>After Response Interceptor Support at Controller Level</p>
-<ul>
-<li>We can write response interceptor in any Controller</li>
-<li><p>General Use cases -</p>
-<ul>
-<li>Use of Request Interceptor after response </li>
-</ul>
-<p>Generally, we will use this event to run any service like shooting mail etc.,</p>
-</li>
-</ul>
-<p>The sample code will be like -</p>
-<pre><code class="lang-js"><span class="hljs-comment">//Access Application Logger</span>
+<p>If we want to use custom middleware to manipulate the request and response,
+We will create the <code>middleware</code> as -</p>
+<p>File - <code>PlainTextController.js</code></p>
+<pre><code class="lang-js"><span class="hljs-comment">// Access the Application Logger</span>
 <span class="hljs-keyword">var</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'minimalweb'</span>).logger;
-<span class="hljs-comment">// Initialise base controller</span>
-<span class="hljs-keyword">var</span> controller = <span class="hljs-built_in">require</span>(<span class="hljs-string">'minimalweb'</span>).abstractController;
-<span class="hljs-comment">// Constructor</span>
-<span class="hljs-keyword">var</span> selfController = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-    logger.log(<span class="hljs-string">"selfController constructed"</span>);
-}
-<span class="hljs-comment">//Extends base controller</span>
-selfController.__proto__ = controller;
 
-<span class="hljs-comment">// Processing main request</span>
-<span class="hljs-comment">// This code is omitted as this is not in perview of the Interceptor use</span>
+<span class="hljs-comment">// The Middleware to create (Here is a dummy implementation)</span>
+<span class="hljs-keyword">var</span> firstFunction = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(req,res,next)</span> </span>{
+      logger.log(<span class="hljs-string">"first Function executed"</span>);
+      logger.log(req.url);
+      next();
+  };
 
-<span class="hljs-comment">// Use of after response interceptor </span>
-selfController.getRequestInterceptor().on(<span class="hljs-string">'afterProcessResponse'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req,res)</span> </span>{
-    <span class="hljs-comment">// We can use this event after request processing </span>
-    <span class="hljs-comment">//Guaranteed Asynchronous Functionality</span>
-    process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> 
-        </span>{
-        logger.log(<span class="hljs-string">"sample request processing after process response"</span>);          
-    });
-});
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req,res,next)</span> </span>{
+      <span class="hljs-keyword">return</span> firstFunction(req,res,next);
+  };
+</code></pre>
+<p>Now to put the above middleware with the framework, we need to attach this one before server starting point as -</p>
+<pre><code class="lang-js"><span class="hljs-comment">//code snippet to enable middleware functionality</span>
+
+<span class="hljs-comment">// Need for routing functionality</span>
+<span class="hljs-keyword">var</span> route = minimalweb.route;
+
+<span class="hljs-comment">//Assuming the middleware in 'example-middlewares' folder</span>
+<span class="hljs-keyword">var</span> fMiddle = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./example-middlewares/firstMiddleWare'</span>);
+<span class="hljs-comment">// Attach the middleware</span>
+route.use(fMiddle);
 </code></pre>
 
 <h4>
