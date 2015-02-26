@@ -1,105 +1,88 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    	
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <title>Minimalweb - Getting Started</title>
-  </head>
-
-  <body>
-    <header>
-      <div class="inner">
-        <h1><a href="http://www.minimalweb.me" style="color:white;">Minimalweb</a></h1>
-        <h2>A simple web framework with node.js which has provision to support rest api and http request both</h2>
-        <a href="https://github.com/piyasde/minimalweb"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
-      </div>
-      <div class="inner">
-	<iframe src="https://ghbtns.com/github-btn.html?user=piyasde&repo=minimalweb&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
-	<iframe src="https://ghbtns.com/github-btn.html?user=piyasde&repo=minimalweb&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
-	
-      </div>
-      <div class="addthis_native_toolbox inner"></div>
-      	
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <p><a href="http://badge.fury.io/js/minimalweb"><img src="https://badge.fury.io/js/minimalweb.svg" alt="npm version"></a>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Minimalweb - Getting Started</title>
+</head>
+<body>
+<header>
+<div class="inner">
+<h1><a href="http://www.minimalweb.me" style="color:white;">Minimalweb</a></h1>
+<h2>A simple web framework with node.js which has provision to support rest api and http request both</h2>
+<a href="https://github.com/piyasde/minimalweb"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+</div>
+<div class="inner">
+<iframe src="https://ghbtns.com/github-btn.html?user=piyasde&repo=minimalweb&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+<iframe src="https://ghbtns.com/github-btn.html?user=piyasde&repo=minimalweb&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+</div>
+<div class="addthis_native_toolbox inner"></div>
+</header>
+<div id="content-wrapper">
+<div class="inner clearfix">
+<section id="main-content">
+<p><a href="http://badge.fury.io/js/minimalweb"><img src="https://badge.fury.io/js/minimalweb.svg" alt="npm version"></a>
 <a href="https://travis-ci.org/piyasde/minimalweb.svg?branch=master"><img src="https://travis-ci.org/piyasde/minimalweb.svg?branch=master" alt="Build Status"></a>
 <a href="https://coveralls.io/r/piyasde/minimalweb?branch=master"><img src="https://coveralls.io/repos/piyasde/minimalweb/badge.svg?branch=master" alt="Coverage Status"></a>
 <a href="https://codeship.com/projects/61652"> <img src="https://codeship.com/projects/27b39020-9126-0132-1525-6e434ff849c7/status?branch=master" alt="Codeship Status for piyasde/minimalweb"></a></p>
-
 <h1>
 <a id="minimalweb-a-model-view-controller-framework" class="anchor" href="#minimalweb-a-model-view-controller-framework" aria-hidden="true"><span class="octicon octicon-link"></span></a>minimalweb (A Model-View-Controller Framework)</h1>
-
-<p>A simple web framework with node.js which has provision to support rest api and http request. 
-The framework will only support request/response handling. 
-The Model and Service related implementation will be needed to be done by user. 
+<p>A simple web framework with node.js which has provision to support rest api and http request.
+The framework will only support request/response handling.
+The Model and Service related implementation will be needed to be done by user.
 The view can be attached in Configuration or can be injected from Controller.</p>
-
 <p>It is integrated with Travis CI and Codeship for Continuous Building and Code Coverage Report can be found in Coveralls. </p>
-
 <div class="highlight highlight-sh"><pre>$ npm install minimalweb</pre></div>
-
 <h2>
 <a id="framework-access" class="anchor" href="#framework-access" aria-hidden="true"><span class="octicon octicon-link"></span></a>Framework access</h2>
-
 <div class="highlight highlight-js"><pre><span class="pl-s">var</span> minimalweb <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>minimalweb<span class="pl-pds">'</span></span>)</pre></div>
-
 <h3>
 <a id="framework-feature-support" class="anchor" href="#framework-feature-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Framework Feature Support</h3>
-
 <ul>
-<li>  Get Method Handling</li>
-<li>  Post Method Handling</li>
-<li>  Post Method Handling with Upload</li>
-<li>  Limited set of REST Support (Upto Now)</li>
-<li>  Request Parameter Handling</li>
-<li>  Session Handling</li>
-<li>  Custom Middleware support at Request Processing Level</li>
-<li>  Central Request Interceptor Support</li>
-<li>  After Response Interceptor Support at Controller Level</li>
-<li>  Minimum caching support for static file serving</li>
-<li>  Routing configuration through JSON Array</li>
+<li> Get Method Handling</li>
+<li> Post Method Handling</li>
+<li> Post Method Handling with Upload</li>
+<li> Limited set of REST Support (Upto Now)</li>
+<li> Request Parameter Handling</li>
+<li> Session Handling</li>
+<li> Custom Middleware support at Request Processing Level</li>
+<li> Central Request Interceptor Support</li>
+<li> After Response Interceptor Support at Controller Level</li>
+<li> Minimum caching support for static file serving</li>
+<li> Routing configuration through JSON Array</li>
 </ul>
-
 <h4>
 <a id="the-first-project-get-plain-text-as-response" class="anchor" href="#the-first-project-get-plain-text-as-response" aria-hidden="true"><span class="octicon octicon-link"></span></a>The First Project (Get Plain Text as response)</h4>
-
 <h5>
 <a id="create-a-controller--" class="anchor" href="#create-a-controller--" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a Controller -</h5>
-
 <p>File - <code>PlainTextController.js</code></p>
-
 <div class="highlight highlight-js"><pre><span class="pl-s">var</span> controller <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>minimalweb<span class="pl-pds">'</span></span>).abstractController;
 <span class="pl-s">var</span> <span class="pl-en">selfController</span> <span class="pl-k">=</span> <span class="pl-st">function</span> () {
 }
 selfController.__proto__ <span class="pl-k">=</span> controller;
 
 <span class="pl-s3">selfController</span>.<span class="pl-en">processRequest</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">req</span>,<span class="pl-vpf">res</span>) {
-    selfController.setString(<span class="pl-s1"><span class="pl-pds">"</span>This is controller text<span class="pl-pds">"</span></span>);
-    selfController.process(req,res,<span class="pl-st">function</span>(<span class="pl-vpf">err</span>,<span class="pl-vpf">content</span>){
-        logger<span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>content -<span class="pl-pds">'</span></span><span class="pl-k">+</span>content);
-    });
-}</pre></div>
+   selfController.setString(<span class="pl-s1"><span class="pl-pds">"</span>This is controller text<span class="pl-pds">"</span></span>);
+   selfController.process(req,res,<span class="pl-st">function</span>(<span class="pl-vpf">err</span>,<span class="pl-vpf">content</span>){
+      logger<span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>content -<span class="pl-pds">'</span></span><span class="pl-k">+</span>content);
+   });
+}
 
+<span class="hljs-built_in">module</span>.exports.getPlainTextController = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+   <span class="hljs-keyword">return</span> selfController;
+};
+</pre></div>
 <h5>
 <a id="create-a-route-collection--" class="anchor" href="#create-a-route-collection--" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a Route Collection -</h5>
-
 <p>File - <code>routeCollection.js</code></p>
-
 <div class="highlight highlight-js"><pre><span class="pl-s">var</span> routeCollection <span class="pl-k">=</span>
 [
     {requestPath<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">'</span>/mwplain<span class="pl-pds">'</span></span>,executeController<span class="pl-k">:</span><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>./PlainTextController<span class="pl-pds">'</span></span>).getPlainTextController(),format<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">"</span>plain<span class="pl-pds">"</span></span>}
@@ -114,19 +97,16 @@ selfController.__proto__ <span class="pl-k">=</span> controller;
 };
 
 <span class="pl-sv">module</span>.exports.getRouteCollection <span class="pl-k">=</span> getRouteCollection;</pre></div>
-
 <h5>
 <a id="create-the-start-point-of-the-server--" class="anchor" href="#create-the-start-point-of-the-server--" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create the start point of the Server -</h5>
-
 <p>File - <code>startpoint.js</code></p>
-
 <div class="highlight highlight-js"><pre><span class="pl-s">var</span> minimalweb <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>minimalweb<span class="pl-pds">'</span></span>);
 
 <span class="pl-c">// Need for routing functionality</span>
 <span class="pl-s">var</span> route <span class="pl-k">=</span> minimalweb.route;
 
 <span class="pl-c">/**</span>
-<span class="pl-c"> * routing collection is aquired and send to route for request processing   </span>
+<span class="pl-c"> * routing collection is aquired and send to route for request processing </span>
 <span class="pl-c"> */</span>
 <span class="pl-s">var</span> routeCollection <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>./routeCollection<span class="pl-pds">'</span></span>).getRouteCollection().routeCollection;
 route.setRouteCollection(routeCollection);
@@ -135,135 +115,111 @@ route.setRouteCollection(routeCollection);
 <span class="pl-c"> * Last step - start the server</span>
 <span class="pl-c"> */</span>
 minimalweb.spawn(<span class="pl-s1"><span class="pl-pds">"</span>127.0.0.1<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>3001<span class="pl-pds">"</span></span>);</pre></div>
-
 <h4>
 <a id="sample-project" class="anchor" href="#sample-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample Project</h4>
-
 <p>Sample project is given with features in <code>minimalweb-test</code> folder in project root.</p>
-
 <p>Controllers are with functionalities -</p>
-
 <ul>
-<li>  PlainTextController        - featured with <code>plain text</code> handling</li>
-<li>  PlainRequestController     - featured with <code>Request Parameter</code> handling</li>
-<li>  PlainRestController        - featured with <code>Rest API</code> handling</li>
-<li>  PlainHtmlController        - featured with <code>plain text</code> handling</li>
-<li>  PlainXmlController         - featured with <code>xml</code> handling</li>
-<li>  PlainJsonController        - featured with <code>json</code> handling</li>
-<li>  methodController           - featured with <code>method</code> handling in Controller</li>
-<li>  StaticFileController       - featured with <code>static file</code> handling</li>
-<li>  DynamicFileController      - featured with <code>dynamic file</code> handling i.e. render with server side variable values.</li>
-<li>  PostController             - featured with <code>post</code> handling with/without upload</li>
+<li> PlainTextController - featured with <code>plain text</code> handling</li>
+<li> PlainRequestController - featured with <code>Request Parameter</code> handling</li>
+<li> PlainRestController - featured with <code>Rest API</code> handling</li>
+<li> PlainHtmlController - featured with <code>plain text</code> handling</li>
+<li> PlainXmlController - featured with <code>xml</code> handling</li>
+<li> PlainJsonController - featured with <code>json</code> handling</li>
+<li> methodController - featured with <code>method</code> handling in Controller</li>
+<li> StaticFileController - featured with <code>static file</code> handling</li>
+<li> DynamicFileController - featured with <code>dynamic file</code> handling i.e. render with server side variable values.</li>
+<li> PostController - featured with <code>post</code> handling with/without upload</li>
 </ul>
-
 <h4>
 <a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h4>
-
 <p>Tests are done wih mocha. Main test file is <code>test.js</code> in project root.</p>
-
 <h4>
 <a id="code-coverage" class="anchor" href="#code-coverage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code Coverage</h4>
-
 <p>Code coverage is done with <code>istanbul</code>. Report can be found in <a href="https://coveralls.io/r/piyasde/minimalweb">Coveralls</a>.</p>
-
 <h3>
 <a id="some-features-where-commuity-libraries-are-used--" class="anchor" href="#some-features-where-commuity-libraries-are-used--" aria-hidden="true"><span class="octicon octicon-link"></span></a>Some features where commuity libraries are used -</h3>
-
 <ul>
-<li>  Session Handling through <code>express-session</code>
+<li> Session Handling through <code>express-session</code>
 </li>
-<li>  Post Variables Handling through <code>formidable</code>
+<li> Post Variables Handling through <code>formidable</code>
 </li>
-<li>  Javascript template handling with <code>ejs</code>
+<li> Javascript template handling with <code>ejs</code>
 </li>
-<li>  Application Access log implementation with <code>morgan</code> (Process Request)</li>
-<li>  Application log implementation with <code>bunyan</code>
+<li> Application Access log implementation with <code>morgan</code> (Process Request)</li>
+<li> Application log implementation with <code>bunyan</code>
 </li>
 </ul>
-
 <h5>
 <a id="thanks-to-all-of-the-contributors-in-npm-registry-whose-libray-are-used-to-build-the-current-framework" class="anchor" href="#thanks-to-all-of-the-contributors-in-npm-registry-whose-libray-are-used-to-build-the-current-framework" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thanks to all of the contributors in npm registry, whose libray are used to build the current framework</h5>
-
 <h4>
 <a id="left-works" class="anchor" href="#left-works" aria-hidden="true"><span class="octicon octicon-link"></span></a>Left works and good-to-have features listing</h4>
-
 <ul>
-<li>  Left Errors handling</li>
-<li>  All REST Pattern Handling </li>
-<li>  Provision for generic javascript template engine handling</li>
-<li>  Inclusion of Authentication framework</li>
+<li> Left Errors handling</li>
+<li> All REST Pattern Handling </li>
+<li> Provision for generic javascript template engine handling</li>
+<li> Inclusion of Authentication framework</li>
 </ul>
-
 <h4>
 <a id="known-issues" class="anchor" href="#known-issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Known Issues</h4>
 <ul>
-<li><del>  Provision of root path - "/" - redirect mechanism </del></li>
-<li><del>  Provision for get and post on same route </del></li>
-<li>  unit testing of all of the above features </li>
-<li>  load testing </li>
+<li><del> Provision of root path - "/" - redirect mechanism </del></li>
+<li><del> Provision for get and post on same route </del></li>
+<li> unit testing of all of the above features </li>
+<li> load testing </li>
 </ul>
-
-
 <h5>
 <a id="version018-changes" class="anchor" href="#version018-changes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Version 0.1.8 Changes</h5>
 <ul>
-<li><del>  Static file handling optimisation </del></li>
-<li><del>  Static file handling through methods in controller </del></li>
-<li><del>  Dynamic file handling through methods in controller </del></li>
-<li><del>  remove current cache </del></li>
-<li><del>  implement cache of ejs </del></li>
-<li><del>  implement cache of node-static </del></li>
+<li><del> Static file handling optimisation </del></li>
+<li><del> Static file handling through methods in controller </del></li>
+<li><del> Dynamic file handling through methods in controller </del></li>
+<li><del> remove current cache </del></li>
+<li><del> implement cache of ejs </del></li>
+<li><del> implement cache of node-static </del></li>
 </ul>
-
 <h4>
-
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h4>
-
 <p><a href="https://github.com/piyasde/minimalweb/blob/master/LICENSE">MIT</a></p>
-        </section>
-
-        <aside id="sidebar">
-	  <h3 style="font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
-	font-size: 14px;
-	font-weight: bold;
-	color: #474747;
-	text-indent: 4px;">Important to know</h3>
-          <p style="margin-bottom: 2px;"><a href="routerconfigurations.html"><strong>Router Configuration Details</strong></a></p>	
-          <p style="margin-bottom: 2px;"><a href="listofcontrollers.html"><strong>List of Controllers</strong></a></p>
-	  <p style="margin-bottom: 2px;"><a href="reqresintercept.html"><strong>Request/Response Interceptors</strong></a></p>
-	  <p style="margin-bottom: 2px;"><a href="middlewarehowto.html"><strong>Middlewares: How to?</strong></a></p>
-	  <h3 style="font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
-	font-size: 14px;
-	font-weight: bold;
-	color: #474747;
-	text-indent: 4px;">Downloads</h3>	
-          <a href="https://github.com/piyasde/minimalweb/zipball/master" class="button" >
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/piyasde/minimalweb/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-	  	
-          <p class="repo-owner"><a href="https://github.com/piyasde/minimalweb"></a> is maintained by <a href="https://github.com/piyasde">piyasde</a>.</p>
-	  
-	  <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
-
-            <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-59498844-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
-	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4feb14fa70912371" async="async"></script>
-
-  </body>
+</section>
+<aside id="sidebar">
+<h3 style="font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+font-size: 14px;
+font-weight: bold;
+color: #474747;
+text-indent: 4px;">Important to know</h3>
+<p style="margin-bottom: 2px;"><a href="routerconfigurations.html"><strong>Router Configuration Details</strong></a></p>
+<p style="margin-bottom: 2px;"><a href="listofcontrollers.html"><strong>List of Controllers</strong></a></p>
+<p style="margin-bottom: 2px;"><a href="reqresintercept.html"><strong>Request/Response Interceptors</strong></a></p>
+<p style="margin-bottom: 2px;"><a href="middlewarehowto.html"><strong>Middlewares: How to?</strong></a></p>
+<h3 style="font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+font-size: 14px;
+font-weight: bold;
+color: #474747;
+text-indent: 4px;">Downloads</h3>
+<a href="https://github.com/piyasde/minimalweb/zipball/master" class="button" >
+<small>Download</small>
+.zip file
+</a>
+<a href="https://github.com/piyasde/minimalweb/tarball/master" class="button">
+<small>Download</small>
+.tar.gz file
+</a>
+<p class="repo-owner"><a href="https://github.com/piyasde/minimalweb"></a> is maintained by <a href="https://github.com/piyasde">piyasde</a>.</p>
+<p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+</aside>
+</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-59498844-1");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4feb14fa70912371" async="async"></script>
+</body>
 </html>
