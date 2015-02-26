@@ -18,7 +18,7 @@ var staicFileHelper = function() {
   //logger.log("staicFilehelper constructed");
 }
 
-var json;
+var json = {};
 staicFileHelper.processFile = function (req,res,filePath) {
 	//fs.exists(filePath, function (exists) { 
 	    //if (exists) {
@@ -26,7 +26,7 @@ staicFileHelper.processFile = function (req,res,filePath) {
 		{	
 		      var headers = {'Content-type': mimeTypes[path.extname(filePath)]};
 			logger.log('sfileheplerstattic--'+res.requiredData);
-					
+			json = {};		
 			if(typeof res.requiredData !=='undefined')
 				{
 					json = JSON.parse(res.requiredData);
@@ -40,7 +40,8 @@ staicFileHelper.processFile = function (req,res,filePath) {
 					// render or error
 					else {
 						res.writeHead(500);
-						res.end('Internal Server Error... file path '
+						res.end('Probably the json variable property declaration are not right\n' 
+							+'or other Server Error... file path '
 							+filePath+' server path '+serverPath);
 						logger.log(err);
 					}
@@ -50,6 +51,7 @@ staicFileHelper.processFile = function (req,res,filePath) {
 	      else
 		{
 			logger.log('sfileheplerdynamic--'+res.requiredData);
+			json = {};
 			if(typeof res.requiredData !=='undefined')
 				{
 					json = JSON.parse(res.requiredData);
@@ -68,8 +70,9 @@ staicFileHelper.processFile = function (req,res,filePath) {
 						logger.logWarn('Internal Server Error');
 			
 						res.writeHead(500);
-						res.end('Internal Server Error... file path '+filePath+
-							' server path '+serverPath + 'err '+err);
+						res.end('Probably the json variable property declaration are not right\n' 
+							+'or other Server Error... file path '
+							+filePath+' server path '+serverPath);
 						logger.log(err);
 					}
 			});
